@@ -6,37 +6,53 @@ import java.util.Scanner;
 
 public class NewVendingMachine extends VendingMachine {
 
-    private List <Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
+
+    Scanner scanner = new Scanner(System.in);
 
     public NewVendingMachine(List<Product> products) {
         this.products = products;
     }
 
-    Scanner scanner = new Scanner(System.in);
-    
-    public float enterTemperature(){
-        System.out.println("Enter the temperature");
-        float temperature = scanner.nextFloat();
-        return temperature;
-    }
     @Override
-    public void addProduct(Product product) {
-        
-        List <HotDrinksProduct> productList = new ArrayList<HotDrinksProduct>();
-        productList.add(new HotDrinksProduct(scanner.nextLine(), scanner.nextFloat(), scanner.nextFloat()));
+    public Product findProduct(String name, String volume, int temperature) {
+        for (Product product : products) {
+            if (!(product instanceof HotDrinksProduct))
+                continue;
+
+            HotDrinksProduct hotDrink = (HotDrinksProduct) product;
+
+            if (product.getName().equals(name) && product.getVolume().equals(volume)
+                    && hotDrink.getTemperature() == temperature)
+                return product;
+        }
+        throw new IllegalStateException("Product isn't found!");
     }
 
     @Override
-    public List<Product> showProduct(float temperature) {
-        System.out.println("Chosen product is: " + products.contains(temperature));
-        return products;
+    public void getProduct(Product product) {
+        System.out.printf("Deposit %d rub\n", product.getPrice());
+        float deposit = 0f;
+        int x = 1;
+        while (x == 1) {
+            int cash = scanner.nextInt();
+            deposit += cash;
+            if (deposit < product.getPrice()) {
+                System.out.printf("You need to deposit %f\n", product.getPrice() - deposit);
+
+            } else if (deposit > product.getPrice()) {
+                System.out.printf("Your change %f\n", deposit - product.getPrice());
+                System.out.println("Take your product.");
+                
+                x = 0;
+            } else {
+                System.out.println("Take your product. Thank you");
+                
+                x = 0;
+            }
+        }
+
+        System.out.println("Thank you for shopping with us");
     }
 
-    @Override
-    public void buyProduct(Product product) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    
 }
