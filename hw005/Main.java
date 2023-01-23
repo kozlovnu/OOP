@@ -33,16 +33,20 @@ public class Main {
         presenter.printAllStudents();
         System.out.println("******************************");
         System.out.println();
+
         System.out.println("Student Attendance:");
         presenter.printStudentsAttendance();
         System.out.println("******************************");
         System.out.println();
+
         System.out.println("Student sorted attendance:");
         presenter.printSortedAttendance();
         System.out.println("******************************");
         System.out.println();
+        
         System.out.println("Student Attendance below 25%:");
         presenter.printLowestAttendance();
+
 
     }
 }
