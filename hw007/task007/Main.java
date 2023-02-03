@@ -13,6 +13,12 @@ public class Main {
     phone.setContact("89119991122");
     contact.setPhone(phone);
 
+   ContactType adress = new AdressContacType();
+   adress.setContact("Spb");
+   adress.setContact("Moscow");
+   contact.setPhone(adress);
+
+
     System.out.println(contact.getPhone());
     System.out.println(contact.toString()); 
     

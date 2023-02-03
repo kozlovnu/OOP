@@ -16,11 +16,6 @@ public class AdressContacType extends ContactType {
         this.contact = contact;
     }
 
-    @Override
-    public void setContactDetails(String contactDetails) {
-        // TODO Auto-generated method stub
-        super.setContactDetails(contactDetails);
-    }
 
     @Override
     public Map<String, List<String>> getContact() {

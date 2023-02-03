@@ -13,16 +13,7 @@ public class ImmutableList extends AbstractList<Integer> {
         this.list.add(99);
         this.list.add(76);
     }
-
-    // private List<Integer> setList(){
-    //     list.add(3);
-    //     list.add(4);
-    //     list.add(12);
-    //     list.add(88);
-
-    //     return list;
-    // }
-
+    
     @Override
     public Integer getSize() {
         return list.size();

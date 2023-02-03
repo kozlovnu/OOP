@@ -1,10 +1,13 @@
 package Homework.hw007.task007;
 
+import java.util.Map;
+
 import Homework.hw007.task007.model.ContactName;
 
 public class ContactServise {
     private ContactName name;
     private ContactType phone;
+    private Map <ContactName, ContactType> map;
 
     public ContactServise(ContactName name, ContactType phone) {
         this.name = name;
