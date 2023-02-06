@@ -1,38 +1,82 @@
 package Homework.hw007.task007;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Homework.hw007.task007.model.ContactName;
 
 public class ContactServise {
     private ContactName name;
-    private ContactType phone;
-    private Map <ContactName, ContactType> map;
+    private ContactType contactType;
+    private Map<String, List<String>> contact;
+    private Map<ContactName, Map<String, List<String>>> map;
 
-    public ContactServise(ContactName name, ContactType phone) {
-        this.name = name;
-        this.phone = phone;
-    }
-
-    public ContactName getName() {
-        return name;
-    }
-
-    public ContactType getPhone() {
-        return phone;
+    public ContactServise() {
+        this.map = new HashMap<>();
+        this.contact = new HashMap<>();
     }
 
     @Override
     public String toString() {
-        return name.toString() + " ," + phone.toString();
+        return name.toString() + " ," + contact.toString();
+    }
+
+    public Map<ContactName, Map<String, List<String>>> addContact(ContactName contactName,
+            ContactType contactType /* String contactType, String contactDetails */) {
+        // contact = contactType;
+        if (!map.containsKey(contactName)) {
+            map.put(contactName, new HashMap<>());
+        }
+        if (!map.get(contactName).containsKey(contactType.getContactType())) {
+            map.get(contactName).put(contactType.getContactType(), new ArrayList<>());
+        }
+        map.get(contactName).put(contactType.getContactType(), contactType.getDetailsList());
+        return map;
+
     }
 
     public void setName(ContactName name) {
         this.name = name;
     }
 
-    public void setPhone(ContactType phone) {
-        this.phone = phone;
+    public Map<String, List<String>> setContact(ContactType contactType) {
+        contact.put(contactType.getContactType(), contactType.getDetailsList());
+        return contact;
+    }
+
+    public int getContactSize() {
+        return map.size();
+    }
+
+    public int getcontactListSize(){
+        return contact.size();
+    }
+
+    // перенести в viewer
+    public void showContact() {
+        // Map<ContactName, Map<String, List<String>>> log =
+        // contactType.getContact();
+        for (ContactName contactName : map.keySet()) {
+            System.out.println(contactName + ":");
+            // Map<String, List<String>> contacts = map.get(contactName);
+            // for (String contactType : contacts.keySet()) {
+            //     System.out.println(contacts.get(contactType).toString());
+            // }
+            // System.out.println();
+        }
+    }
+
+    public void showContactDetails(ContactName name){
+        
+       System.out.println(map.get(name).values().toString());
+    }
+
+    public void printContactList(){
+        for (String contactType : contact.keySet()){
+            System.out.println(contactType + ": " + contact.get(contactType));
+        }
     }
 
 }

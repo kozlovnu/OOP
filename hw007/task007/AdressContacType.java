@@ -6,16 +6,19 @@ import java.util.List;
 import java.util.Map;
 
 public class AdressContacType extends ContactType {
-    private String contactType = "adress";
+    private String contactType;
+
     List<String> detailsList;
     private Map<String, List<String>> contact;
 
 
-    public AdressContacType() {
-        this.detailsList = detailsList;
-        this.contact = contact;
-    }
 
+
+    public AdressContacType() {
+        // this.contactType = contactType;
+        this.detailsList = new ArrayList<>();
+        this.contact = new HashMap<>();
+    }
 
     @Override
     public Map<String, List<String>> getContact() {
@@ -35,10 +38,12 @@ public class AdressContacType extends ContactType {
         return super.getDetailsList();
     }
 
+
+
     @Override
-    public Map<String, List<String>> setContact(String details) {
+    public Map<String, List<String>> setContact(String contactType, String details) {
         // TODO Auto-generated method stub
-        return super.setContact(details);
+        return super.setContact(contactType, details);
     }
 
     @Override

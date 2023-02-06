@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class ContactType {
-    private String contactType = "phone";
-    private List<String> detailsList;
+    private String contactType;
     private Map<String, List<String>> contact;
 
     public ContactType() {
-        this.detailsList = new ArrayList<>();
         this.contact = new HashMap<>();
     }
 
@@ -19,15 +17,16 @@ public class ContactType {
         return contactType;
     }
 
-    public Map<String, List<String>> setContact(String details){
-        detailsList.add(details);
-        contact.put(this.contactType, this.detailsList);
+    public Map<String, List<String>> setContact(String contactType, String details) {
+        if (!contact.containsKey(contactType)) {
+            contact.put(contactType, new ArrayList<>());
+        }
+        contact.get(contactType).add(details);
         return contact;
     }
 
-
     public List<String> getDetailsList() {
-        return detailsList;
+        return contact.get(contactType);
     }
 
     public Map<String, List<String>> getContact() {
@@ -36,9 +35,7 @@ public class ContactType {
 
     @Override
     public String toString() {
-        return contactType + "= " + contact.get(contactType) + "]";
+        return contact.entrySet().toString();
     }
-
-    
 
 }
