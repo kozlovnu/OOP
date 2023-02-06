@@ -28,24 +28,26 @@ public class Main {
    contact.setContact(adress);
    contact.setContact(phone);
 
-  UserContact userContact = new UserContact(name);
-  userContact.addUserContact(adress);
-  userContact.addUserContact(phone);
+  UserContact userContact = new UserContact();
+  userContact.addUserContact(name,adress);
+  userContact.addUserContact(name,phone);
+  userContact.addUserContact(name2,adress);
+  userContact.addUserContact(name2,phone);
 
-  UserContact userContact2 = new UserContact(name2);
-  userContact2.addUserContact(adress);
-  userContact2.addUserContact(phone);
+  // UserContact userContact2 = new UserContact(name2);
+  // userContact2.addUserContact(name2, adress);
+  // userContact2.addUserContact(name2,phone);
 
   // System.out.println(phone.getContactType());
   // System.out.println(phone.getDetailsList().toArray().toString());
 
   userContact.printUserContacts();
-  userContact2.printUserContacts();
+  // userContact2.printUserContacts();
 
-  adress.setContact("home adress", "NY");
+  // adress.setContact("home adress", "NY");
 
-  userContact.printUserContacts();
-  userContact2.printUserContacts();
+  // userContact.printUserContacts();
+  // userContact2.printUserContacts();
 
   //  System.out.println(phone.toString());
   //  System.out.println(adress.toString());
