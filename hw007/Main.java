@@ -5,7 +5,7 @@ import Homework.hw007.contact.Contact;
 import Homework.hw007.contact.ContactList;
 import Homework.hw007.model.ContactName;
 import Homework.hw007.model.PersonContact;
-import Homework.hw007.task007.ContactType;
+import Homework.hw007.task007.model.contacts.ContactType;
 
 public class Main {
     public static void main(String[] args) {

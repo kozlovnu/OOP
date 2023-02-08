@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Homework.hw007.task007.model.ContactName;
+import Homework.hw007.task007.model.contacts.ContactType;
+import Homework.hw007.task007.model.user.ContactName;
 
 public class ContactServise {
     private ContactName name;
     private ContactType contactType;
-    private Map<String, List<String>> contact;
-    private Map<ContactName, Map<String, List<String>>> map;
+    private Map<String, String> contact;
+    private Map<ContactName, Map<String, String>> map;
 
     public ContactServise() {
         this.map = new HashMap<>();
@@ -23,7 +24,7 @@ public class ContactServise {
         return name.toString() + " ," + contact.toString();
     }
 
-    public Map<ContactName, Map<String, List<String>>> addContact(ContactName contactName,
+    public Map<ContactName, Map<String, String>> addContact(ContactName contactName,
             ContactType contactType /* String contactType, String contactDetails */) {
         // contact = contactType;
         if (!map.containsKey(contactName)) {
