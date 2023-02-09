@@ -1,4 +1,4 @@
-package Homework.hw007.task007.model.contacts;
+package Homework.hw007.model.contacts;
 
 import java.util.HashMap;
 import java.util.Map;

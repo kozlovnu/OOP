@@ -1,15 +1,16 @@
-package Homework.hw007.task007.model.contacts;
+package Homework.hw007.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import Homework.hw007.task007.model.user.ContactName;
+import Homework.hw007.model.contacts.ContactType;
+import Homework.hw007.model.user.ContactName;
 
-public class UserContact <T> {
+public class UserContactService<T> {
 
     private Map<ContactName, Map<String, T>> userContacts;
 
-    public UserContact() {
+    public UserContactService() {
 
         userContacts = new HashMap<>();
     }
@@ -29,16 +30,9 @@ public class UserContact <T> {
         return userContacts;
     }
 
-    // перенести во viewer
-    public void printUserContacts() {
-        for (ContactName contactName : userContacts.keySet()) {
-            System.out.println(contactName + ":");
-            Map<String, T> contacts = userContacts.get(contactName);
-            for (String contactType : contacts.keySet()) {
-                System.out.println(contactType + ": " + contacts.get(contactType).toString());
-            }
-            System.out.println();
-        }
+    public Map<ContactName, Map<String, T>> deleteUserContact(ContactName name) {
+        userContacts.remove(name);
+        return userContacts;
     }
 
 }

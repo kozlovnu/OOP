@@ -1,22 +1,21 @@
-package Homework.hw007.task007.view;
+package Homework.hw007.view;
 
 import java.util.Map;
 
-import Homework.hw007.task007.model.contacts.UserContact;
-import Homework.hw007.task007.model.user.ContactName;
+import Homework.hw007.model.user.ContactName;
+import Homework.hw007.service.UserContactService;
 
 public class ContactsView {
     ContactName name;
 
-    public void printContactsNames(UserContact<String> contact){
+    public void printContactsNames(UserContactService<String> contact){
         for (ContactName contactName : contact.getUserContacts().keySet()){
             System.out.println(contactName);
         }
     }
 
-    public void printChosenContact(ContactName name, UserContact<String> contact){
-        // if (contact.getUserContacts().containsValue(contact))
-        // contact.getUserContacts().get(name);
+    public void printChosenContact(ContactName name, UserContactService<String> contact){
+
         for (ContactName contactName : contact.getUserContacts().keySet()) {
         
             Map<String, String> contacts = contact.getUserContacts().get(contactName);
@@ -28,10 +27,21 @@ public class ContactsView {
             System.out.println();
         }
         }
-        // System.out.println(contact.getUserContacts().get(name));
     }
 
-    public void printAllContacts(UserContact<String> contact) {
+    public void printOneContact(String finder, UserContactService<String> contact){
+        for (ContactName contactName : contact.getUserContacts().keySet()){
+            if (contactName.getName().equals(finder)){
+                System.out.println(contactName + ":");
+                Map<String, String> contacts = contact.getUserContacts().get(contactName);
+                for (String contactType : contacts.keySet()){
+                    System.out.println(contactType + ": " + contacts.get(contactType).toString());
+                }
+            }
+        }
+    }
+
+    public void printAllContacts(UserContactService<String> contact) {
         for (ContactName contactName : contact.getUserContacts().keySet()) {
             System.out.println(contactName + ":");
             Map<String, String> contacts = contact.getUserContacts().get(contactName);

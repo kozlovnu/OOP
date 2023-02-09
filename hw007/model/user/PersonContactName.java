@@ -1,4 +1,4 @@
-package Homework.hw007.task007.model.user;
+package Homework.hw007.model.user;
 
 public class PersonContactName extends ContactName {
     private String lastName;
